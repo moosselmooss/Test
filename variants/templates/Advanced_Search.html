@@ -1,0 +1,140 @@
+ {%  include 'NavBar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/css/bootstrap-select.min.css">
+
+    <style>{
+  .border-radius(0) !important;
+}
+
+#field {
+    margin-bottom:20px;
+}
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+$(document).ready(function(){
+
+    $( "#form" ).keypress(function(e) {
+      if ( e.which == 13 ) {
+         e.preventDefault();
+      }
+    });
+
+    var next = 1;
+    $(".add-more").click(function(e){
+        e.preventDefault();
+        var addto = "#field" + next;
+        var addRemove = "#field" + (next);
+        next = next + 1;
+        var newIn = '<label class="col-md-4 control-label" id="operator_id' + next + '" for="selectbasic">Operator</label><select id="Operator'+ next  +'" name="query" class="form-control"><option value="AND">AND</option><option value="OR">OR</option></select><label class="col-md-4 control-label" id="type_id' + next + '" for="selectbasic">Type</label><select id="type'+ next +'" name="query" class="form-control"><option value="Gene_Symbol">Gene_Symbol</option><option value="variant">variant</option><option value="Allele">Allele</option></select><input autocomplete="off" class="input form-control" id="field' + next + '" name="query" type="text">';
+        var newInput = $(newIn);
+        var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
+        var removeButton = $(removeBtn);
+        $(addto).after(newInput);
+        $(addRemove).after(removeButton);
+        $("#field" + next).attr('data-source',$(addto).attr('data-source'));
+        $("#count").val(next);
+
+            $('.remove-me').click(function(e){
+                e.preventDefault();
+                var fieldNum = this.id.charAt(this.id.length-1);
+                var fieldID = "#field" + fieldNum;
+                var typeNum = this.id.charAt(this.id.length-1);
+                var typeID = "#type" + typeNum;
+                var type_label = this.id.charAt(this.id.length-1);
+                var typelID = "#type_id" + type_label;
+                var operatorNum = this.id.charAt(this.id.length-1);
+                var operatorID = "#Operator" + operatorNum;
+                var operator_label = this.id.charAt(this.id.length-1);
+                var operatorlID = "#operator_id" + operator_label;
+                $(this).remove();
+                $(fieldID).remove();
+                $(typeID).remove();
+                $(operatorID).remove();
+                $(typelID).remove();
+                $(operatorlID).remove();
+            });
+    });
+
+
+
+});
+
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = $(form1).serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+
+$(document).on('submit' , '#form1',function (e) {
+        e.preventDefault();
+
+        //var myEvent ={"ay7aga": "123", "jhd":"344"};
+        var myEvent = JSON.stringify($('form1').serializeObject());
+        //var myEvent= $(form1).serializeArray();
+        $.ajax({
+            type: 'POST' ,
+            url: 'ComplexQuery_view',
+            dataType: 'text',
+            contentType: 'application/json; charset=utf-8',
+            data: myEvent,
+            success: function(newdata){
+                    $( '#s' ).html(newdata);
+                $('#t').hide();
+                }
+
+        });
+    });
+
+
+</script>
+
+<div class="container" id="t">
+	<div class="row">
+		<input type="hidden" name="count" value="1" />
+        <div class="control-group" id="fields">
+            <div class="controls" id="profs">
+                <form class="input-append" id="form1" name="form1">{% csrf_token %}
+                    <div id="field"><label class="col-md-4 control-label" id="type_id1" for="selectbasic">Type</label><select id="type1" name="query" class="form-control">
+                        <option value="Gene_Symbol">Gene_Symbol</option>
+                        <option value="Variant">Variant</option>
+                        <option value="Allele">Allele</option>
+
+    </select><input autocomplete="off" class="input" id="field1" name="query" type="text" placeholder="Type something" data-items="8"/><button id="b1" class="btn add-more" type="button">+</button>
+  </div>
+
+                    <p><input type="submit" /></p>
+                </form>
+            <br>
+            <small>Press + to add another form field :)</small>
+
+            </div>
+        </div>
+	</div>
+</div>
+                <aside id="s">
+                </aside>
+
+</body>
+</html>
