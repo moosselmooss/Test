@@ -82,21 +82,21 @@ Q_list.append(Query22)
 
 ## JUST IN CASE ######################################
 #
-# Variant_attributes = ["Chromosome_Number", "Position", "Var_ID", "Reference", "Alternate", "Quality", "Filter"]
-# Population_attributes = ["Variant",  "Allele_Count",  "AC_African_American",  "AC_American",  "AC_Adjusted",  "AC_East_Asian",  "AC_Finnish",  "AC_Hemizygous",  "AC_Heterozygous",  "AC_Homozygous",  "AC_Non_Finnish_European",  "AC_Other",  "AC_South_Asian",  "Allele_Frequency",  "Allele_Number",  "AN_African_American",  "AN_American",  "AN_Adjusted",  "AN_East_Asian",  "AN_Finnish",  "AN_Non_Finnish",  "AN_Other",  "AN_South_Asian",  "Read_Depth",  "Genotype_Quality_MEAN",  "GQ_Standard_Deviation",  "Hemi_African_American",  "Hemi_American",  "Hemi_East_Asian",  "Hemi_Finnish",  "Hemi_Non_Finnish_European",  "Hemi_Other",  "Hemi_South_Asian",  "Het_African_American",  "Het_American",  "Het_East_Asian",  "Het_Finnish",  "Het_Non_Finnish_European",  "Het_Other",  "Het_South_Asian",  "Hom_African_American",  "Hom_American",  "Hom_East_Asian",  "Hom_Finnish",  "Hom_Non_Finnish_European_Homozygous",  "Hom_Other",  "Hom_South_Asian",  "InbreedingCoef",  "DP_HIST",  "GQ_HIST"]
-# Annotation_attributes = ["Variant",  "Population",  "Allele",  "Consequence",  "Impact",  "Gene_Symbol",  "Gene",  "Feature",  "Feature_type",  "Biotype",  "Exon",  "Intron",  "HGVS_DNA",  "HGVS_Protein",  "cDNA_position",  "CDS_position",  "Protein_position",  "Amino_acids",  "Codons",  "Existing_variation",  "ALLELE_NUM",  "DISTANCE",  "STRAND",  "VARIANT_CLASS",  "MINIMISED",  "SYMBOL_SOURCE",  "HGNC_ID",  "CANONICAL",  "TSL",  "CCDS",  "ENSP",  "SWISSPROT",  "TREMBL",  "UNIPARC",  "SIFT",  "PolyPhen",  "DOMAINS",  "HGVS_OFFSET",  "GMAF",  "AFR_MAF",  "AMR_MAF",  "ASN_MAF",  "EAS_MAF",  "EUR_MAF",  "SAS_MAF",  "AA_MAF",  "EA_MAF",  "CLIN_SIG",  "SOMATIC",  "PHENO",  "PUBMED",  "MOTIF_NAME",  "MOTIF_POS",  "HIGH_INF_POS",  "MOTIF_SCORE_CHANGE",  "LoF_info",  "LoF_flags",  "LoF_filter",  "LoF",  "context",  "ancestral"]
-#
-#
-# def attribute_exists(in_attribute):
-#
-#     if hasattr(Variant, in_attribute):
-#         return "exists in Variant"
-#     elif hasattr(Population, in_attribute):
-#         return "exists in Population"
-#     elif hasattr(Annotation, in_attribute):
-#         return "exists in Annotation"
-#
-#     return "Does not exist"
+ Variant_attributes = ["Chromosome_Number", "Position", "Var_ID", "Reference", "Alternate", "Quality", "Filter"]
+ Population_attributes = ["Variant",  "Allele_Count",  "AC_African_American",  "AC_American",  "AC_Adjusted",  "AC_East_Asian",  "AC_Finnish",  "AC_Hemizygous",  "AC_Heterozygous",  "AC_Homozygous",  "AC_Non_Finnish_European",  "AC_Other",  "AC_South_Asian",  "Allele_Frequency",  "Allele_Number",  "AN_African_American",  "AN_American",  "AN_Adjusted",  "AN_East_Asian",  "AN_Finnish",  "AN_Non_Finnish",  "AN_Other",  "AN_South_Asian",  "Read_Depth",  "Genotype_Quality_MEAN",  "GQ_Standard_Deviation",  "Hemi_African_American",  "Hemi_American",  "Hemi_East_Asian",  "Hemi_Finnish",  "Hemi_Non_Finnish_European",  "Hemi_Other",  "Hemi_South_Asian",  "Het_African_American",  "Het_American",  "Het_East_Asian",  "Het_Finnish",  "Het_Non_Finnish_European",  "Het_Other",  "Het_South_Asian",  "Hom_African_American",  "Hom_American",  "Hom_East_Asian",  "Hom_Finnish",  "Hom_Non_Finnish_European_Homozygous",  "Hom_Other",  "Hom_South_Asian",  "InbreedingCoef",  "DP_HIST",  "GQ_HIST"]
+ Annotation_attributes = ["Variant",  "Population",  "Allele",  "Consequence",  "Impact",  "Gene_Symbol",  "Gene",  "Feature",  "Feature_type",  "Biotype",  "Exon",  "Intron",  "HGVS_DNA",  "HGVS_Protein",  "cDNA_position",  "CDS_position",  "Protein_position",  "Amino_acids",  "Codons",  "Existing_variation",  "ALLELE_NUM",  "DISTANCE",  "STRAND",  "VARIANT_CLASS",  "MINIMISED",  "SYMBOL_SOURCE",  "HGNC_ID",  "CANONICAL",  "TSL",  "CCDS",  "ENSP",  "SWISSPROT",  "TREMBL",  "UNIPARC",  "SIFT",  "PolyPhen",  "DOMAINS",  "HGVS_OFFSET",  "GMAF",  "AFR_MAF",  "AMR_MAF",  "ASN_MAF",  "EAS_MAF",  "EUR_MAF",  "SAS_MAF",  "AA_MAF",  "EA_MAF",  "CLIN_SIG",  "SOMATIC",  "PHENO",  "PUBMED",  "MOTIF_NAME",  "MOTIF_POS",  "HIGH_INF_POS",  "MOTIF_SCORE_CHANGE",  "LoF_info",  "LoF_flags",  "LoF_filter",  "LoF",  "context",  "ancestral"]
+
+
+ def attribute_exists(in_attribute):
+
+     if hasattr(Variant, in_attribute):
+         return "exists in Variant"
+     elif hasattr(Population, in_attribute):
+         return "exists in Population"
+     elif hasattr(Annotation, in_attribute):
+         return "exists in Annotation"
+
+     return "Does not exist"
 #######################################################
 
 
